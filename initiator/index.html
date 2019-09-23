@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Initiator Requestor</title>
+
+    <style>
+        .container {
+            width: 90%;
+            margin: 0 auto;
+        }
+        .container h1 {
+            letter-spacing: 1px;
+        }
+        .container button {
+            margin-top: 30px;
+            border: none;
+            background-color: #249624;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            color: white;
+            border-radius: 5px;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Initiator will make the request</h1>
+        <button onclick="makeRequest()">Make Request</button>
+    </div>
+
+    <script>
+        function makeRequest() {
+            fetch("http://localhost:8000/handle")
+            .then(response => {
+                response.json()
+                .then(data => {
+                    console.log("Got the data");
+                    console.log(data);
+                })
+            })
+            .catch(err => console.error(err));
+        }
+    </script>
+</body>
+</html>
